@@ -1,11 +1,23 @@
-export default function randomItem<T>(array: T[]): T {
-  return array[Math.floor(Math.random() * array.length)];
-}
+export type xkcdResponse = {
+  month: string;
+  num: number;
+  link: string;
+  year: string;
+  news: string;
+  safe_title: string;
+  transcript: string;
+  alt: string;
+  img: string;
+  title: string;
+  day: string;
+};
 
-export function randomMultipleItems<T>(array: T[], count: number): T[] {
-  if (count <= 0) {
-    throw new RangeError(`Got ${count}, expected a non-negative integer.`);
-  }
+export default async function xkcd(
+  id?: number | string,
+): Promise<xkcdResponse> {
+  const response = await fetch(
+    `https://xkcd.com/${id ? `${id}/` : ""}info.0.json`,
+  );
 
-  return [...Array.from({ length: count })].map(() => randomItem(array));
+  return response.json();
 }
