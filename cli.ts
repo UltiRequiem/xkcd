@@ -31,8 +31,10 @@ async function main() {
   const keys = Object.keys(args);
 
   if (keys.length > 2) {
-    console.log(`Check the parameters for correctness.`);
-    console.log(keys.slice(1));
+    console.log(`
+    Check the parameters for correctness.
+    Passed arguments ${keys.slice(1).join(", ")}.
+    `);
     Deno.exit(1);
   }
 
