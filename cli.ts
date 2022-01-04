@@ -1,12 +1,8 @@
 import xkdc from "./mod.ts";
-import { ensureDir, parse } from "./deps.ts";
+import { Args, ensureDir, parse } from "./deps.ts";
+import { download, filenameFromUrl } from "./utils.ts";
 
 const COMMAND = "xkdc";
-
-async function download(url: string, filename: string) {
-  const response = await fetch(url);
-  return Deno.writeFile(filename, new Uint8Array(await response.arrayBuffer()));
-}
 
 function showHelp() {
   console.log(`
@@ -15,8 +11,7 @@ function showHelp() {
     Options:
       -h, --help       Show this help message
       -v, --version    Show version
-      -d, --download   Download the latest comic
-      -f, --filename   Specify the filename to save the comic
+      -d, --dir   Download the latest comic
     `);
   Deno.exit(0);
 }
@@ -26,8 +21,7 @@ function showVersion() {
   Deno.exit(0);
 }
 
-async function main() {
-  const args = parse(Deno.args);
+function checkForNotMultipleArguments(args: Args) {
   const keys = Object.keys(args);
 
   if (keys.length > 2) {
@@ -37,16 +31,22 @@ async function main() {
     `);
     Deno.exit(1);
   }
+}
+
+async function main() {
+  const args = parse(Deno.args);
+
+  checkForNotMultipleArguments(args);
 
   const { help, dir = "./xkdc_data", version } = args;
 
   if (help) showHelp();
   if (version) showVersion();
 
-  const { img } = await xkdc();
+  const { img, num } = await xkdc();
 
   await ensureDir(dir);
-  await download(img, `./${dir}/xkcd.png`);
+  await download(img, `./${dir}/${num}_${filenameFromUrl(img)}`);
 }
 
 if (import.meta.main) {
