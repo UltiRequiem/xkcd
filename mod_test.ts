@@ -1,10 +1,10 @@
-import { assertEquals } from "./deps.ts";
+import { assertEquals } from "https://deno.land/std@0.119.0/testing/asserts.ts";
 import xkcd from "./mod.ts";
 
 Deno.test("xkcd", async () => {
   const ID = 99;
 
-  const comicID99 = await xkcd(ID);
+  const { num } = await xkcd(ID);
 
-  assertEquals(comicID99.num, ID);
+  assertEquals(num, ID);
 });
