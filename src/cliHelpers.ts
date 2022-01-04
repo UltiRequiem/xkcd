@@ -1,3 +1,5 @@
+import { Kia, Spinners } from "./deps.ts";
+
 export const APP_NAME = "xkcd";
 export const APP_VERSION = "0.1.0";
 
@@ -22,4 +24,8 @@ export function showHelp() {
 export function showVersion() {
   console.log(`${APP_NAME} v${APP_VERSION}`);
   Deno.exit(0);
+}
+
+export function spinner(text: string) {
+  return new Kia({ text, spinner: Spinners.arc });
 }

@@ -1,7 +1,7 @@
 import xkdc from "./mod.ts";
 import { ensureDir, parse } from "./src/deps.ts";
-import { download, filenameFromUrl, spinner } from "./src/utils.ts";
-import { APP_NAME, showHelp, showVersion } from "./src/cliHelpers.ts";
+import { download, filenameFromUrl } from "./src/utils.ts";
+import { APP_NAME, showHelp, showVersion, spinner } from "./src/cliHelpers.ts";
 
 async function main() {
   const { help, h, d, dir = `./${APP_NAME}_data`, version, v, all } = parse(
