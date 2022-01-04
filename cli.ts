@@ -1,6 +1,6 @@
 import xkdc from "./mod.ts";
-import { ensureDir, Kia, parse, Spinners } from "./src/deps.ts";
-import { download, filenameFromUrl } from "./src/utils.ts";
+import { ensureDir, parse } from "./src/deps.ts";
+import { download, filenameFromUrl, spinner } from "./src/utils.ts";
 import { APP_NAME, showHelp, showVersion } from "./src/cliHelpers.ts";
 
 async function main() {
@@ -17,12 +17,11 @@ async function main() {
 
   await ensureDir(finalDir);
 
-  if (all) {
-    const kia = new Kia({
-      text: `Downloading ${num} comics...`,
-      spinner: Spinners.arc,
-    });
+  const kia = spinner(
+    `Downloading ${all ? num : ""}comic${all ? "s" : ""}...`,
+  );
 
+  if (all) {
     kia.start();
 
     const downloadPromises = Array.from({ length: num });
@@ -40,14 +39,9 @@ async function main() {
     return;
   }
 
-  const kia = new Kia({
-    text: `Downloading comic...`,
-    spinner: Spinners.windows,
-  });
-
   kia.start();
 
-  const filename = filenameFromUrl(img)
+  const filename = filenameFromUrl(img);
 
   await download(img, filename);
 
