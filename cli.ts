@@ -8,12 +8,14 @@ async function main() {
     Deno.args,
   );
 
+  const finalDir = d || dir;
+
   if (help || h) showHelp();
   if (version || v) showVersion();
 
   const { img, num } = await xkdc();
 
-  await ensureDir(dir);
+  await ensureDir(finalDir);
 
   if (all) {
     const kia = new Kia({
@@ -29,15 +31,29 @@ async function main() {
       if (index == 404) continue;
       const { img, num } = await xkdc(index);
       downloadPromises.push(
-        await download(img, `${dir}/${num}_${filenameFromUrl(img)}`),
+        await download(img, `${finalDir}/${num}_${filenameFromUrl(img)}`),
       );
     }
 
     await Promise.all(downloadPromises);
+    kia.succeed();
     return;
   }
 
-  await download(img, filenameFromUrl(img));
+  const kia = new Kia({
+    text: `Downloading comic...`,
+    spinner: Spinners.windows,
+  });
+
+  kia.start();
+
+  const filename = filenameFromUrl(img)
+
+  await download(img, filename);
+
+  kia.succeed();
+
+  console.log(`Successfully downloaded ${filename}.`);
 }
 
 if (import.meta.main) {
