@@ -21,9 +21,9 @@ async function main() {
     `Downloading ${all ? num : ""}comic${all ? "s" : ""}...`,
   );
 
-  if (all) {
-    kia.start();
+  kia.start();
 
+  if (all) {
     const downloadPromises = Array.from({ length: num });
 
     for (let index = 0; index < num; index++) {
@@ -35,19 +35,15 @@ async function main() {
     }
 
     await Promise.all(downloadPromises);
-    kia.succeed();
-    return;
+  } else {
+    const filename = filenameFromUrl(img);
+
+    await download(img, filename);
+
+    console.log(`Successfully downloaded ${filename}.`);
   }
 
-  kia.start();
-
-  const filename = filenameFromUrl(img);
-
-  await download(img, filename);
-
   kia.succeed();
-
-  console.log(`Successfully downloaded ${filename}.`);
 }
 
 if (import.meta.main) {
