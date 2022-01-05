@@ -7,36 +7,30 @@ import {
   spinner,
 } from "./src/mod.ts";
 
-async function main() {
-  const [dir, all, id] = cliArguments();
+const [dir, all, id] = cliArguments();
 
-  const { img, num: length } = await xkdc();
+const { img, num: length } = await xkdc(id);
 
-  await ensureDir(dir);
+await ensureDir(dir);
 
-  const kia = spinner(
-    `Downloading ${all ? `${length} ` : ""}comic${all ? "s" : ""}...`,
-  );
+const kia = spinner(
+  `Downloading ${all ? `${length} ` : ""}comic${all ? "s" : ""}...`,
+);
 
-  kia.start();
+kia.start();
 
-  if (all) {
-    const dp = Array.from({ length });
+if (all) {
+  const dp = Array.from({ length });
 
-    for (let index = 0; index < length; index++) {
-      if (index == 404) continue; // little xkcd author bad joke
-      const { img, num } = await xkdc(index);
-      dp.push(download(img, `${dir}/${num}_${filenameFromUrl(img)}`));
-    }
-
-    await Promise.all(dp);
-  } else {
-    await download(img, filenameFromUrl(img));
+  for (let index = 0; index < length; index++) {
+    if (index == 404) continue; // little xkcd author bad joke
+    const { img, num } = await xkdc(index);
+    dp.push(download(img, `${dir}/${num}_${filenameFromUrl(img)}`));
   }
 
-  kia.succeed();
+  await Promise.all(dp);
+} else {
+  await download(img, filenameFromUrl(img));
 }
 
-if (import.meta.main) {
-  main();
-}
+kia.succeed();

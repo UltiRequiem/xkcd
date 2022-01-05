@@ -40,7 +40,7 @@ export function cliArguments() {
 
   if (all && id) {
     console.error(
-      "You can't download all and a specific comic at the same time",
+      "You can't download all and a specific comic at the same time!",
     );
     showHelp(false);
   }

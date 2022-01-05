@@ -4,13 +4,13 @@ on: push
 
 jobs:
   lint:
-    name: Run tests, Lint, and check format.
+    name: Run tests, lint, and check format.
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - uses: denoland/setup-deno@v1
-      with:
-        deno-version: v1.x
+        with:
+          deno-version: v1.x
       - run: deno lint
       - run: deno test --allow-net
       - run: deno fmt --check
