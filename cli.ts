@@ -1,51 +1,42 @@
 import xkdc from "./mod.ts";
-import { ensureDir, parse } from "./src/deps.ts";
-import { download, filenameFromUrl } from "./src/utils.ts";
-import { APP_NAME, showHelp, showVersion, spinner } from "./src/cliHelpers.ts";
+import {
+  cliArguments,
+  download,
+  ensureDir,
+  filenameFromUrl,
+  spinner,
+} from "./src/mod.ts";
 
 async function main() {
-  const { help, h, d, dir = `./${APP_NAME}_data`, version, v, all } = parse(
-    Deno.args,
-  );
+  const [dir, all, id] = cliArguments();
 
-  const finalDir = d || dir;
+  const { img, num: length } = await xkdc();
 
-  if (help || h) showHelp();
-  if (version || v) showVersion();
-
-  const { img, num } = await xkdc();
-
-  await ensureDir(finalDir);
+  await ensureDir(dir);
 
   const kia = spinner(
-    `Downloading ${all ? num : ""}comic${all ? "s" : ""}...`,
+    `Downloading ${all ? `${length} ` : ""}comic${all ? "s" : ""}...`,
   );
 
   kia.start();
 
   if (all) {
-    const downloadPromises = Array.from({ length: num });
+    const dp = Array.from({ length });
 
-    for (let index = 0; index < num; index++) {
-      if (index == 404) continue;
+    for (let index = 0; index < length; index++) {
+      if (index == 404) continue; // little xkcd author bad joke
       const { img, num } = await xkdc(index);
-      downloadPromises.push(
-        await download(img, `${finalDir}/${num}_${filenameFromUrl(img)}`),
-      );
+      dp.push(download(img, `${dir}/${num}_${filenameFromUrl(img)}`));
     }
 
-    await Promise.all(downloadPromises);
+    await Promise.all(dp);
   } else {
-    const filename = filenameFromUrl(img);
-
-    await download(img, filename);
-
-    console.log(`Successfully downloaded ${filename}.`);
+    await download(img, filenameFromUrl(img));
   }
 
   kia.succeed();
 }
 
 if (import.meta.main) {
-  await main();
+  main();
 }

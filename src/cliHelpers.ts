@@ -1,9 +1,9 @@
-import { Kia, Spinners } from "./deps.ts";
+import { Kia, parse, Spinners } from "./deps.ts";
 
 export const APP_NAME = "xkcd";
 export const APP_VERSION = "0.1.0";
 
-export function showHelp() {
+export function showHelp(successfully = true) {
   console.log(`Usage: ${APP_NAME} [OPTIONS]
 
     Options:
@@ -16,14 +16,40 @@ export function showHelp() {
     Examples:
       ${APP_NAME} -d comics
       ${APP_NAME} --id 98
-      ${APP_NAME} --id 98 --dir data
-      `);
-  Deno.exit(0);
+      ${APP_NAME} --id 98 --dir data`);
+  Deno.exit(successfully ? 0 : 1);
+}
+
+export function cliArguments() {
+  let { h, help, d, dir = `${APP_NAME}_data`, v, version, a, all, i, id } =
+    parse(
+      Deno.args,
+    );
+
+  if (h || help) {
+    showHelp();
+  }
+
+  if (v || version) {
+    showVersion();
+  }
+
+  dir = d || dir;
+  all = a || all;
+  id = i || id;
+
+  if (all && id) {
+    console.error(
+      "You can't download all and a specific comic at the same time",
+    );
+    showHelp(false);
+  }
+
+  return [dir, all, id];
 }
 
 export function showVersion() {
   console.log(`${APP_NAME} v${APP_VERSION}`);
-  Deno.exit(0);
 }
 
 export function spinner(text: string) {
