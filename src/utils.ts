@@ -8,4 +8,3 @@ export function filenameFromUrl(url: string) {
   const index = pathname.lastIndexOf("/");
   return (-1 !== index) ? pathname.substring(index + 1) : pathname;
 }
-
