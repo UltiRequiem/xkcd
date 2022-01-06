@@ -4,31 +4,89 @@
 
 ## CLI Tool
 
+### Install
+
+```sh
+deno install  --allow-net --allow-write --allow-read https://deno.land/x/xkcd/cli.ts
+```
+
+### Usage Examples
+
+Download the latest comic:
+
+```sh
+xkcd
+```
+
+Download comic by ID:
+
+```sh
+xkcd -i 587 # or --id 587
+```
+
+Download all comics:
+
+```sh
+xkcd -a # --all
+```
+
+Specify a directory to download the images:
+
+```sh
+xkcd --all --dir data/
+```
+
+### Builtin Help
+
+```
+xkcd --help
+```
+
 ## Module
 
 Usage Example:
 
 ```typescript
-import XKCD from "https://deno.land/x/xkcd/mod.ts";
+import xkcd from "https://deno.land/x/xkcd/mod.ts";
 
-await XKCD();
+await xkcd();
 ```
 
 A more extensive one:
 
 ```typescript
 import {
-  randomXKCD,
-  randomXKCDComicLink,
-  XKCD,
-  XKCDComicLink,
+  randomXkcd,
+  randomXkcdComicLink,
+  xkcd,
+  xkcdComicLink,
 } from "https://deno.land/x/xkcd/mod.ts";
 
-await XKCD(); //=> The latest XKCD comic metadata
-await XKCDComicLink(); //=> The asset link of a the latest XKCD comic
-await randomXKCD(); //=> A random XKCD comic metadata
-await randomXKCDComicLink(); //=> The asset link of a random XKCD comic
+await xkcd(); //=> The latest XKCD comic metadata
+await xkcdComicLink(); //=> The asset link of a the latest XKCD comic
+await randomXkcd(); //=> A random XKCD comic metadata
+await randomXkcdComicLink(); //=> The asset link of a random XKCD comic
 ```
+
+## API
+
+### [`xkcd`](./mod.ts#L19)
+
+This is exported as default and as named export.
+
+Returns the metadata of the latest xkcd comic.
+
+### [`xkcdComicLink`](./mod.ts#L27)
+
+Returns the image link of the latest xkcd comic.
+
+### [`randomXkcd`](./mod.ts#L32)
+
+Returns the metadata of a random xkcd comic.
+
+### [`randomXkcdComicLink`](./mod.ts#L49)
+
+Returns a random comic link.
 
 ## Licence
 

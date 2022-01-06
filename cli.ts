@@ -20,21 +20,15 @@ kia.start();
 if (all) {
   await ensureDir(dir);
 
-  const dp = Array.from({ length }, (_, index) => {
-    if (index === 404) return;
+  const dp = Array.from({ length });
 
-    let promise;
-
-    xkdc(index).then(({ img, num }) => {
-      promise = download(img, `${dir}/${num}_${filenameFromURL(img)}`);
-    });
-
-    return promise;
-  });
+  for (let index = 0; index < length; index++) {
+    if (index == 404) continue; // little xkcd author bad joke
+    const { img, num } = await xkdc(index);
+    dp.push(await download(img, `${dir}/${num}_${filenameFromURL(img)}`));
+  }
 
   await Promise.all(dp);
 } else {
   await download(img, filenameFromURL(img));
 }
-
-kia.succeed();

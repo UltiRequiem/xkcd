@@ -1,6 +1,6 @@
 import { randomNumber } from "./deps.ts";
 
-export interface XKCDResponse {
+export interface xkcdResponse {
   month: string;
   num: number;
   link: string;
@@ -16,7 +16,7 @@ export interface XKCDResponse {
 
 export type xkcdID = number | string;
 
-export default async function XKCD(id?: xkcdID): Promise<XKCDResponse> {
+export default async function xkcd(id?: xkcdID): Promise<xkcdResponse> {
   const response = await fetch(
     `https://xkcd.com/${id ? `${id}/` : ""}info.0.json`,
   );
@@ -24,31 +24,31 @@ export default async function XKCD(id?: xkcdID): Promise<XKCDResponse> {
   return response.json();
 }
 
-export async function XKCDComicLink(id?: xkcdID): Promise<string> {
-  const data = await XKCD(id);
+export async function xkcdComicLink(id?: xkcdID): Promise<string> {
+  const data = await xkcd(id);
   return data.img;
 }
 
-export async function randomXKCD() {
-  if (Number.isNaN(randomXKCD.latestNumber)) {
-    const { num } = await XKCD();
-    randomXKCD.latestNumber = num;
+export async function randomXkcd() {
+  if (Number.isNaN(randomXkcd.latestNumber)) {
+    const { num } = await xkcd();
+    randomXkcd.latestNumber = num;
   }
 
   const id = randomNumber({
     min: 1,
-    max: randomXKCD.latestNumber,
+    max: randomXkcd.latestNumber,
     integer: true,
   });
 
-  return XKCD(id);
+  return xkcd(id);
 }
 
-randomXKCD.latestNumber = NaN;
+randomXkcd.latestNumber = NaN;
 
-export async function randomXKCDComicLink() {
-  const randomImage = await randomXKCD();
+export async function randomXkcdComicLink() {
+  const randomImage = await randomXkcd();
   return randomImage.img;
 }
 
-export { XKCD };
+export { xkcd };

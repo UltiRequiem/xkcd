@@ -1,11 +1,11 @@
 import {
-  randomXKCD,
-  randomXKCDComicLink,
-  XKCD,
-  XKCDComicLink,
+  randomXkcd,
+  randomXkcdComicLink,
+  xkcd,
+  xkcdComicLink,
 } from "../mod.ts";
 
-console.log(await randomXKCD()); //=> A random XKCD comic metadata
-console.log(await XKCD()); //=> The latest XKCD comic metadata
-console.log(await randomXKCDComicLink()); //=> The asset link of a random XKCD comic
-console.log(await XKCDComicLink()); //=> The asset link of a the latest XKCD comic
+console.log(await xkcd()); //=> The latest XKCD comic metadata
+console.log(await xkcdComicLink()); //=> The asset link of a the latest XKCD comic
+console.log(await randomXkcd()); //=> A random XKCD comic metadata
+console.log(await randomXkcdComicLink()); //=> The asset link of a random XKCD comic
