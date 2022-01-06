@@ -53,6 +53,7 @@ export function cliArguments() {
 
 export function showVersion() {
   console.log(`${APP_NAME} v${APP_VERSION}`);
+  Deno.exit(0);
 }
 
 export function spinner(text: string) {
@@ -61,7 +62,8 @@ export function spinner(text: string) {
 
 export async function download(url: string, filename: string) {
   const response = await fetch(url);
-  return Deno.writeFile(filename, new Uint8Array(await response.arrayBuffer()));
+  const data = await response.arrayBuffer();
+  return Deno.writeFile(filename, new Uint8Array(data));
 }
 
 export function filenameFromURL(url: string) {
