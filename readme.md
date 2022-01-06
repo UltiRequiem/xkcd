@@ -6,8 +6,10 @@
 
 ## Module
 
+Usage Example:
+
 ```typescript
-import XKCD from "../mod.ts";
+import XKCD from "https://deno.land/x/xkcd/mod.ts";
 
 await XKCD();
 ```
@@ -20,12 +22,12 @@ import {
   randomXKCDComicLink,
   XKCD,
   XKCDComicLink,
-} from "../mod.ts";
+} from "https://deno.land/x/xkcd/mod.ts";
 
-await randomXKCD(); //=> A random XKCD comic metadata
 await XKCD(); //=> The latest XKCD comic metadata
-await randomXKCDComicLink(); //=> The asset link of a random XKCD comic
 await XKCDComicLink(); //=> The asset link of a the latest XKCD comic
+await randomXKCD(); //=> A random XKCD comic metadata
+await randomXKCDComicLink(); //=> The asset link of a random XKCD comic
 ```
 
 ## Licence
