@@ -24,31 +24,21 @@ export function showHelp(successfully = true) {
 }
 
 export function cliArguments() {
-  let { h, help, d, dir = `${APP_NAME}_data`, v, version, a, all, i, id } =
-    parse(
-      Deno.args,
-    );
+  const { h, v, d = `${APP_NAME}_data`, a, i } = parse(Deno.args, {
+    alias: { h: "help", v: "version", d: "dir", a: "all", i: "id" },
+  });
 
-  if (h || help) {
-    showHelp();
-  }
+  if (h) showHelp();
+  if (v) showVersion();
 
-  if (v || version) {
-    showVersion();
-  }
-
-  dir = d || dir;
-  all = a || all;
-  id = i || id;
-
-  if (all && id) {
+  if (a && i) {
     console.error(
       "You can't download all and a specific comic at the same time!",
     );
     showHelp(false);
   }
 
-  return [dir, all, id];
+  return [d, a, i];
 }
 
 export function showVersion() {
