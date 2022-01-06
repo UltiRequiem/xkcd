@@ -3,15 +3,13 @@ import {
   cliArguments,
   download,
   ensureDir,
-  filenameFromUrl,
+  filenameFromURL,
   spinner,
 } from "./src/mod.ts";
 
 const [dir, all, id] = cliArguments();
 
 const { img, num: length } = await xkdc(id);
-
-await ensureDir(dir);
 
 const kia = spinner(
   `Downloading ${all ? `${length} ` : ""}comic${all ? "s" : ""}...`,
@@ -20,17 +18,23 @@ const kia = spinner(
 kia.start();
 
 if (all) {
-  const dp = Array.from({ length });
+  await ensureDir(dir);
 
-  for (let index = 0; index < length; index++) {
-    if (index == 404) continue; // little xkcd author bad joke
-    const { img, num } = await xkdc(index);
-    dp.push(download(img, `${dir}/${num}_${filenameFromUrl(img)}`));
-  }
+  const dp = Array.from({ length }, (_, index) => {
+    if (index === 404) return;
+
+    let promise;
+
+    xkdc(index).then(({ img, num }) => {
+      promise = download(img, `${dir}/${num}_${filenameFromURL(img)}`);
+    });
+
+    return promise;
+  });
 
   await Promise.all(dp);
 } else {
-  await download(img, filenameFromUrl(img));
+  await download(img, filenameFromURL(img));
 }
 
 kia.succeed();

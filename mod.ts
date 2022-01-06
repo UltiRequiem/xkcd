@@ -50,3 +50,5 @@ export async function randomXKCDComicLink() {
   const randomImage = await randomXKCD();
   return randomImage.img;
 }
+
+export { XKCD };

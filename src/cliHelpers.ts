@@ -4,7 +4,9 @@ export const APP_NAME = "xkcd";
 export const APP_VERSION = "0.1.0";
 
 export function showHelp(successfully = true) {
-  console.log(`Usage: ${APP_NAME} [OPTIONS]
+  const log = successfully ? console.log : console.error;
+
+  log(`Usage: ${APP_NAME} [OPTIONS]
 
     Options:
       -h, --help       Show this help message
@@ -17,6 +19,7 @@ export function showHelp(successfully = true) {
       ${APP_NAME} -d comics
       ${APP_NAME} --id 98
       ${APP_NAME} --id 98 --dir data`);
+
   Deno.exit(successfully ? 0 : 1);
 }
 
