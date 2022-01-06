@@ -1,3 +1,5 @@
-import XKCD from "./mod.ts";
+import { randomXKCD } from "./mod.ts";
 
-const xkcd123Data = XKCD(123);
+const xkcdData = await randomXKCD();
+
+console.log(xkcdData);
