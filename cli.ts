@@ -1,15 +1,17 @@
 import xkdc from "./mod.ts";
+import { ensureDir } from "./cli_deps.ts";
 import {
   cliArguments,
   download,
-  ensureDir,
   filenameFromURL,
   spinner,
-} from "./src/mod.ts";
+} from "./cli_helpers.ts";
 
 const [dir, all, id] = cliArguments();
 
 const { img, num: length } = await xkdc(id);
+
+await ensureDir(dir);
 
 const kia = spinner(
   `Downloading ${all ? `${length} ` : ""}comic${all ? "s" : ""}...`,
@@ -18,17 +20,17 @@ const kia = spinner(
 kia.start();
 
 if (all) {
-  await ensureDir(dir);
-
   const dp = Array.from({ length });
 
   for (let index = 0; index < length; index++) {
     if (index == 404) continue; // little xkcd author bad joke
     const { img, num } = await xkdc(index);
-    dp.push(await download(img, `${dir}/${num}_${filenameFromURL(img)}`));
+    dp.push(download(img, `${dir}/${num}_${filenameFromURL(img)}`));
   }
 
   await Promise.all(dp);
 } else {
-  await download(img, filenameFromURL(img));
+  await download(img, `${dir}/${length}_${filenameFromURL(img)}`);
 }
+
+kia.succeed();

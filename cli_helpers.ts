@@ -1,4 +1,4 @@
-import { Kia, parse, Spinners } from "./deps.ts";
+import { Kia, parse, Spinners } from "./cli_deps.ts";
 
 export const APP_NAME = "xkcd";
 export const APP_VERSION = "0.1.0";
@@ -57,4 +57,15 @@ export function showVersion() {
 
 export function spinner(text: string) {
   return new Kia({ text, spinner: Spinners.arc });
+}
+
+export async function download(url: string, filename: string) {
+  const response = await fetch(url);
+  return Deno.writeFile(filename, new Uint8Array(await response.arrayBuffer()));
+}
+
+export function filenameFromURL(url: string) {
+  const { pathname } = new URL(url);
+  const index = pathname.lastIndexOf("/");
+  return (-1 !== index) ? pathname.substring(index + 1) : pathname;
 }

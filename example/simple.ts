@@ -1,3 +1,3 @@
-import XKCD from "../mod.ts";
+import xkcd from "../mod.ts";
 
-console.log(await XKCD());
+console.log(await xkcd());
