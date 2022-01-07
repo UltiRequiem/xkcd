@@ -6,8 +6,16 @@
 
 ### Install
 
+With [Deno](https://deno.land):
+
 ```sh
 deno install  --allow-net --allow-write --allow-read https://deno.land/x/xkcd/cli.ts
+```
+
+With [Node.js](https://nodejs.org):
+
+```sh
+yarn global add @ultirequiem/xkcd # npm install -g @ultirequiem/xkcd
 ```
 
 ### Usage Examples
@@ -66,6 +74,14 @@ await xkcd(); //=> The latest XKCD comic metadata
 await xkcdComicLink(); //=> The asset link of a the latest XKCD comic
 await randomXkcd(); //=> A random XKCD comic metadata
 await randomXkcdComicLink(); //=> The asset link of a random XKCD comic
+```
+
+The same API is exposed to Node.js:
+
+```javascript
+import xkcd from "@ultirequiem/xkcd";
+
+console.log(await xkcd());
 ```
 
 ## API

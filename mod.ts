@@ -21,7 +21,7 @@ export default async function xkcd(id?: xkcdID): Promise<xkcdResponse> {
     `https://xkcd.com/${id ? `${id}/` : ""}info.0.json`,
   );
 
-  return response.json();
+  return response.json() as Promise<xkcdResponse>;
 }
 
 export async function xkcdComicLink(id?: xkcdID): Promise<string> {
