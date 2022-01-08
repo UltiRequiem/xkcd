@@ -9,10 +9,12 @@
 With [Deno](https://deno.land):
 
 ```sh
-deno install  --allow-net --allow-write --allow-read https://deno.land/x/xkcd/cli.ts
+deno install --allow-net --allow-write --allow-read https://deno.land/x/xkcd/cli.ts
 ```
 
 With [Node.js](https://nodejs.org):
+
+> CLI is not working yet, [denoland/dnt#85](https://github.com/denoland/dnt/issues/85)
 
 ```sh
 yarn global add @ultirequiem/xkcd # npm install -g @ultirequiem/xkcd
