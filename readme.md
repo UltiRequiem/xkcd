@@ -14,7 +14,8 @@ deno install --allow-net --allow-write --allow-read https://deno.land/x/xkcd/cli
 
 With [Node.js](https://nodejs.org):
 
-> CLI is not working yet, [denoland/dnt#85](https://github.com/denoland/dnt/issues/85)
+> CLI is not working yet,
+> [denoland/dnt#85](https://github.com/denoland/dnt/issues/85)
 
 ```sh
 yarn global add @ultirequiem/xkcd # npm install -g @ultirequiem/xkcd
