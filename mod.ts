@@ -21,7 +21,13 @@ export default async function xkcd(id?: xkcdID): Promise<xkcdResponse> {
     `https://xkcd.com/${id ? `${id}/` : ""}info.0.json`,
   );
 
-  return response.json() as Promise<xkcdResponse>;
+  return response.json();
+}
+
+export function* xkdcIterator(start = 1, end = 100) {
+  for (let i = start; i < end; i++) {
+    yield xkcd(i);
+  }
 }
 
 export async function xkcdComicLink(id?: xkcdID): Promise<string> {
