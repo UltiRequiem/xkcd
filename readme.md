@@ -105,7 +105,8 @@ Returns the link of the image of the last xkdc comic.
 
 ### [`xkdcIterator`](./mod.ts#44)
 
-Returns an iterator of the metadata of the xkcd comics by ID in the specified range.
+Returns an iterator of the metadata of the xkcd comics by ID in the specified
+range.
 
 By default will give the 100 first xkcd comics.
 
