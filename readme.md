@@ -89,23 +89,41 @@ console.log(await xkcd());
 
 ## API
 
-### [`xkcd`](./mod.ts#L19)
+### [XKDC_SITE_URL](./mod.ts#19)
+
+An string with the xkdc site URL.
+
+### [`xkcd`](./mod.ts#L24)
 
 This is exported as default and as named export.
 
 Returns the metadata of the latest xkcd comic.
 
-### [`xkcdComicLink`](./mod.ts#L27)
+### [`xkcdComicLink`](./mod.ts#35)
 
-Returns the image link of the latest xkcd comic.
+Returns the link of the image of the last xkdc comic.
 
-### [`randomXkcd`](./mod.ts#L32)
+### [`xkdcIterator`](./mod.ts#44)
+
+Returns an iterator of the metadata of the xkcd comics by ID in the specified range.
+
+By default will give the 100 first xkcd comics.
+
+### [`randomXkcd`](./mod.ts#L53)
 
 Returns the metadata of a random xkcd comic.
 
-### [`randomXkcdComicLink`](./mod.ts#L49)
+### [`randomXkcdComicLink`](./mod.ts#L73)
 
-Returns a random comic link.
+Returns the link of the image of a random xkcd comic.
+
+### [`randomXkcdIterator`](./mod.ts#81)
+
+Returns an iterator of metadata of the specified quantity of random xkcd comics.
+
+#### Types
+
+- [`xkcdResponse`](./mod.ts#3)
 
 ## Licence
 
