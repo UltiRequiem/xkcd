@@ -1,5 +1,5 @@
-export * from "https://deno.land/std@0.127.0/flags/mod.ts";
-export * from "https://deno.land/std@0.127.0/fs/mod.ts";
+export * from "https://deno.land/std@0.128.0/flags/mod.ts";
+export * from "https://deno.land/std@0.128.0/fs/mod.ts";
 export {
   default as Kia,
   Spinners,
