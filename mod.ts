@@ -23,7 +23,7 @@ export const XKDC_SITE_URL = "https://xkcd.com";
  */
 export default async function xkcd(id?: xkcdID): Promise<xkcdResponse> {
   const response = await fetch(
-    `${XKDC_SITE_URL}/${id ? `${id}/` : ""}info.0.json`
+    `${XKDC_SITE_URL}/${id ? `${id}/` : ""}info.0.json`,
   );
 
   return response.json();
