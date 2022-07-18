@@ -22,6 +22,8 @@ jobs:
       - name: Setup Node
         if: matrix.os == 'ubuntu-latest'
         uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
       - name: Check Code Format
         if: matrix.os == 'ubuntu-latest'
