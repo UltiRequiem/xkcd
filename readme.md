@@ -1,131 +1,67 @@
 # xkcd
 
-> A CLI and module to interact with the [XKCD API](https://xkcd.com/info.0.json)
+[![Code Coverage](https://codecov.io/gh/UltiRequiem/xkcd/branch/main/graph/badge.svg)](https://codecov.io/gh/UltiRequiem/xkcd)
+[![Deno Doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/xkcd/mod.ts)
 
-## CLI Tool
+Interact with the [XKCD API](https://xkcd.com/json.html).
 
-### Install
+## Usage
 
-With [Deno](https://deno.land):
+The API is the same on all this platforms ✔️
 
-```sh
-deno install --allow-net --allow-write --allow-read https://deno.land/x/xkcd/cli.ts
-```
-
-With [Node.js](https://nodejs.org):
-
-> CLI is not working yet,
-> [denoland/dnt#85](https://github.com/denoland/dnt/issues/85)
-
-```sh
-yarn global add @ultirequiem/xkcd # npm install -g @ultirequiem/xkcd
-```
-
-### Usage Examples
-
-Download the latest comic:
-
-```sh
-xkcd
-```
-
-Download comic by ID:
-
-```sh
-xkcd -i 587 # or --id 587
-```
-
-Download all comics:
-
-```sh
-xkcd -a # --all
-```
-
-Specify a directory to download the images:
-
-```sh
-xkcd --all --dir data/
-```
-
-### Builtin Help
-
-```
-xkcd --help
-```
-
-## Module
-
-Usage Example:
-
-```typescript
-import xkcd from "https://deno.land/x/xkcd/mod.ts";
-
-await xkcd();
-```
-
-A more extensive one:
-
-```typescript
-import {
-  randomXkcd,
-  randomXkcdComicLink,
-  xkcd,
-  xkcdComicLink,
-} from "https://deno.land/x/xkcd/mod.ts";
-
-await xkcd(); //=> The latest XKCD comic metadata
-await xkcdComicLink(); //=> The asset link of a the latest XKCD comic
-await randomXkcd(); //=> A random XKCD comic metadata
-await randomXkcdComicLink(); //=> The asset link of a random XKCD comic
-```
-
-The same API is exposed to Node.js:
+### [Deno 🦕](https://deno.land/x/xkcd)
 
 ```javascript
-import xkcd from "@ultirequiem/xkcd";
-
-console.log(await xkcd());
+import { xkcd } from "https://deno.land/x/xkcd/mod.ts";
 ```
 
-## API
+### [Node.js 🐢🚀](https://npmjs.com/package/@ultirequiem/xkcd)
 
-### [XKDC_SITE_URL](./mod.ts#19)
+```javascript
+import { xkcd } from "@ultirequiem/xkcd";
+```
 
-An string with the xkdc site URL.
+### [Browser 🌐](https://developer.mozilla.org/en-US/docs/Glossary/Browser)
 
-### [`xkcd`](./mod.ts#L24)
+You can use any [CDN](https://en.wikipedia.org/wiki/Content_delivery_network) 🔥
 
-This is exported as default and as named export.
+Eg 👉
+[ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) ↔️
+[SkyPack](https://cdn.skypack.dev/@ultirequiem/xkcd) 🆚
+[Script Tag](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/script)
+↔️ [JSDelivr](https://cdn.jsdelivr.net/npm/@ultirequiem/xkcd)
 
-Returns the metadata of the latest xkcd comic.
+It includes other helper methods, check the docs.
 
-### [`xkcdComicLink`](./mod.ts#35)
+## Documentation
 
-Returns the link of the image of the last xkdc comic.
+Is hosted on [Deno Doc](https://doc.deno.land/https://deno.land/x/xkcd/mod.ts) 📄
 
-### [`xkdcIterator`](./mod.ts#44)
+## Support
 
-Returns an iterator of the metadata of the xkcd comics by ID in the specified
-range.
+Open an Issue, I will check it a soon as possible 👀
 
-By default will give the 100 first xkcd comics.
+If you want to hurry me up a bit
+[send me a tweet](https://twitter.com/UltiRequiem) 😆
 
-### [`randomXkcd`](./mod.ts#L53)
+Consider [supporting me on Patreon](https://patreon.com/UltiRequiem) if you like
+my work 🙏
 
-Returns the metadata of a random xkcd comic.
+Don't forget to star the repo ⭐
 
-### [`randomXkcdComicLink`](./mod.ts#L73)
+## Authors
 
-Returns the link of the image of a random xkcd comic.
+[Eliaz Bobadilla](https://ultirequiem.com) - Creator and Maintainer 💪
 
-### [`randomXkcdIterator`](./mod.ts#81)
+See also the full list of
+[contributors](https://github.com/UltiRequiem/xkcd/contributors) who
+participated in this project ✨
 
-Returns an iterator of metadata of the specified quantity of random xkcd comics.
+## Versioning
 
-#### Types
-
-- [`xkcdResponse`](./mod.ts#3)
+We use [Semantic Versioning](http://semver.org). For the versions available, see
+the [tags](https://github.com/UltiRequiem/xkcd/tags) 🏷️
 
 ## Licence
 
-All here is licensed under the MIT Licence.
+Licensed under the MIT License 📄
