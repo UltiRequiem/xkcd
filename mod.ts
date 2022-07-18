@@ -1,4 +1,4 @@
-import { randomNumber } from "./deps.ts";
+import { randomNumber } from "https://deno.land/x/random_number/mod.ts";
 
 export interface xkcdResponse {
   month: string;
