@@ -12,13 +12,19 @@ The API is the same on all this platforms ✔️
 ### [Deno 🦕](https://deno.land/x/xkcd)
 
 ```javascript
-import { xkcd } from "https://deno.land/x/xkcd/mod.ts";
+import { latestXkcd, xkcd } from "https://deno.land/x/xkcd/mod.ts";
+
+const myFavoriteXKCD = await xkcd(304);
+
+myFavoriteXKCD.title; //=> Nighttime Stories
+
+await latestXkcd(); // Metadata...
 ```
 
 ### [Node.js 🐢🚀](https://npmjs.com/package/@ultirequiem/xkcd)
 
 ```javascript
-import { xkcd } from "@ultirequiem/xkcd";
+import { latestXkcd, xkcd } from "https://npmjs@ultirequiem/xkcd";
 ```
 
 ### [Browser 🌐](https://developer.mozilla.org/en-US/docs/Glossary/Browser)
