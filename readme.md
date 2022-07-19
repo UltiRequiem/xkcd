@@ -24,7 +24,7 @@ await latestXkcd(); // Metadata...
 ### [Node.js 🐢🚀](https://npmjs.com/package/@ultirequiem/xkcd)
 
 ```javascript
-import { latestXkcd, xkcd } from "https://npmjs@ultirequiem/xkcd";
+import { latestXkcd, xkcd } from "@ultirequiem/xkcd";
 ```
 
 ### [Browser 🌐](https://developer.mozilla.org/en-US/docs/Glossary/Browser)
