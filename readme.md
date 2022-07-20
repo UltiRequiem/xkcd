@@ -43,6 +43,32 @@ It includes other helper methods, check the docs.
 
 Is hosted on [Deno Doc](https://doc.deno.land/https://deno.land/x/xkcd/mod.ts) 📄
 
+## CLI
+
+### Install
+
+- **Deno 🎃**
+
+```sh
+deno install --allow-net https://deno.land/x/xkcd/xkcd.ts
+```
+
+- **Node.js 🐼**
+
+```sh
+npm install -g @ultirequiem/xkcd
+```
+
+### Usage
+
+```sh
+xkcd --help
+```
+
+[A binary for multiple platforms is provided too!](https://github.com/UltiRequiem/xkcd/releases/latest)
+
+[Video Showcase](https://youtu.be/REXxeBx03SI)
+
 ## Support
 
 Open an Issue, I will check it a soon as possible 👀
