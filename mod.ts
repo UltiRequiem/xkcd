@@ -1,3 +1,19 @@
+/**
+ * This module is browser compatible.
+ *
+ * XKDC API Wraper.
+ *
+ * https://github.com/UltiRequiem/xkcd
+ *
+ * https://ulti.js.org/xkcd
+ *
+ * Copyright (c) Eliaz Bobadilla.
+ *
+ * Released under the MIT License.
+ *
+ * @module
+ */
+
 export const XKDC_URL = "https://xkcd.com";
 
 export interface XKCDResponse {
