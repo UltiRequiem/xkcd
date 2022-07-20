@@ -14,7 +14,7 @@ const {
 
 const comicData = await (id ? xkcd(id) : latestXkcd());
 
-console.log(colors.bgRed(`${comicData.title} - ${comicData.num}`));
+console.log(colors.bgBrightMagenta(`"${comicData.title}" - ${comicData.num}`));
 
 console.log();
 
