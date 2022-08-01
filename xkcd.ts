@@ -1,5 +1,5 @@
-import { Command } from "https://deno.land/x/cliffy@v0.24.2/command/mod.ts";
-import { colors } from "https://deno.land/x/cliffy@v0.24.2/ansi/colors.ts";
+import { Command } from "https://deno.land/x/cliffy@v0.24.3/command/mod.ts";
+import { colors } from "https://deno.land/x/cliffy@v0.24.3/ansi/colors.ts";
 import { latestXkcd, xkcd } from "./mod.ts";
 
 const command = new Command()
