@@ -1,7 +1,7 @@
 {
   "name": "@ultirequiem/xkcd",
   "version": "0.0.0-development",
-  "description": "A simple xkcd API",
+  "description": "A small typed client for the xkcd API.",
   "type": "module",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -19,8 +19,10 @@
   },
   "keywords": [
     "xkcd",
+    "comics",
     "api",
-    "json"
+    "esm",
+    "typescript"
   ],
   "license": "MIT",
   "homepage": "https://github.com/grant/xkcd",
