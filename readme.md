@@ -1,6 +1,6 @@
 # xkcd
 
-Interact with the [XKCD API](https://xkcd.com/json.html).
+A small typed client for the xkcd API.
 
 [![npm](https://img.shields.io/npm/v/@ultirequiem/xkcd?logo=npm&color=cb3837)](https://www.npmjs.com/package/@ultirequiem/xkcd)
 [![npm downloads](https://img.shields.io/npm/dm/@ultirequiem/xkcd?color=cb3837)](https://www.npmjs.com/package/@ultirequiem/xkcd)
