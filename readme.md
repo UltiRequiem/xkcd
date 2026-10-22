@@ -1,17 +1,20 @@
 # xkcd
 
-[![Code Coverage](https://codecov.io/gh/UltiRequiem/xkcd/branch/main/graph/badge.svg)](https://codecov.io/gh/UltiRequiem/xkcd)
+[![npm](https://img.shields.io/npm/v/@ultirequiem/xkcd?logo=npm&color=cb3837)](https://www.npmjs.com/package/@ultirequiem/xkcd)
+[![npm downloads](https://img.shields.io/npm/dm/@ultirequiem/xkcd?color=cb3837)](https://www.npmjs.com/package/@ultirequiem/xkcd)
+[![CI](https://github.com/UltiRequiem/xkcd/actions/workflows/ci.yaml/badge.svg)](https://github.com/UltiRequiem/xkcd/actions/workflows/ci.yaml)
+[![codecov](https://codecov.io/gh/UltiRequiem/xkcd/graph/badge.svg)](https://codecov.io/gh/UltiRequiem/xkcd)
 
 Interact with the [XKCD API](https://xkcd.com/json.html).
 
 ## Usage
 
-The API is the same on all this platforms ✔️
+The API is the same on all these platforms ✔️
 
-### [Node.js 🐢🚀](https://npmjs.com/package/xkcd)
+### [Node.js 🐢🚀](https://npmjs.com/package/@ultirequiem/xkcd)
 
 ```javascript
-import { latestXkcd, xkcd } from "xkcd";
+import { latestXkcd, xkcd } from "@ultirequiem/xkcd";
 
 const myFavoriteXKCD = await xkcd(304);
 
@@ -63,7 +66,7 @@ xkcd --help
 
 ## Support
 
-Open an Issue, I will check it a soon as possible 👀
+Open an Issue, I will check it as soon as possible 👀
 
 If you want to hurry me up a bit
 [send me a tweet](https://twitter.com/UltiRequiem) 😆
