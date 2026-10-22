@@ -1,7 +1,6 @@
 # xkcd
 
 [![Code Coverage](https://codecov.io/gh/UltiRequiem/xkcd/branch/main/graph/badge.svg)](https://codecov.io/gh/UltiRequiem/xkcd)
-[![Deno Doc](https://doc.deno.land/badge.svg)](https://doc.deno.land/https/deno.land/x/xkcd/mod.ts)
 
 Interact with the [XKCD API](https://xkcd.com/json.html).
 
@@ -9,22 +8,16 @@ Interact with the [XKCD API](https://xkcd.com/json.html).
 
 The API is the same on all this platforms ✔️
 
-### [Deno 🦕](https://deno.land/x/xkcd)
+### [Node.js 🐢🚀](https://npmjs.com/package/xkcd)
 
 ```javascript
-import { latestXkcd, xkcd } from "https://deno.land/x/xkcd/mod.ts";
+import { latestXkcd, xkcd } from "xkcd";
 
 const myFavoriteXKCD = await xkcd(304);
 
 myFavoriteXKCD.title; //=> Nighttime Stories
 
 await latestXkcd(); // Metadata...
-```
-
-### [Node.js 🐢🚀](https://npmjs.com/package/@ultirequiem/xkcd)
-
-```javascript
-import { latestXkcd, xkcd } from "@ultirequiem/xkcd";
 ```
 
 ### [Browser 🌐](https://developer.mozilla.org/en-US/docs/Glossary/Browser)
@@ -41,8 +34,7 @@ It includes other helper methods, check the docs.
 
 ## Documentation
 
-Is hosted on [Deno Doc](https://doc.deno.land/https://deno.land/x/xkcd/mod.ts) 📄
-
+Types are included with the package.
 ## CLI
 
 ### Install
@@ -75,9 +67,6 @@ Open an Issue, I will check it a soon as possible 👀
 
 If you want to hurry me up a bit
 [send me a tweet](https://twitter.com/UltiRequiem) 😆
-
-Consider [supporting me on Patreon](https://patreon.com/UltiRequiem) if you like
-my work 🙏
 
 Don't forget to star the repo ⭐
 
