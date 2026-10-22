@@ -9,7 +9,7 @@ Interact with the [XKCD API](https://xkcd.com/json.html).
 
 ## Usage
 
-ESM only: the same import works in Node.js, Bun and browsers.
+ESM only, types included: the same import works in Node.js, Bun and browsers.
 
 ```javascript
 import { latestXkcd, xkcd } from "@ultirequiem/xkcd";
@@ -21,9 +21,6 @@ myFavoriteXKCD.title; //=> Nighttime Stories
 await latestXkcd(); // Metadata...
 ```
 
-## Documentation
-
-Types are included with the package.
 ## Support
 
 Open an Issue, I will check it as soon as possible 👀
