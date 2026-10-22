@@ -1,4 +1,4 @@
-import { latestXkcd, xkcd } from "./mod.ts";
+import { latestXkcd, xkcd } from "../src/index.js";
 
 const myFavoriteXKCD = await xkcd(304);
 
